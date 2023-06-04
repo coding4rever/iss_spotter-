@@ -1,14 +1,10 @@
-const nextISSTimesForMyLocation = require('./iss');
+const { fetchMyIP } = require('./iss');
 
-nextISSTimesForMyLocation((err, nextTimes, location) => {
-  if (!err) {
-    console.log(`For ${location}:`);
-    for (let nextTime of nextTimes) {
-      let dateTime = new Date(0);
-      dateTime.setUTCSeconds(nextTime.risetime);
-      console.log(`Next pass at ${dateTime} for ${nextTime.duration} seconds!`);
-    }
-  } else {
-    console.log(err);
+fetchMyIP((error, ip) => {
+  if (error) {
+    console.log("It didn't work!" , error);
+    return;
   }
+
+  console.log('It worked! Returned IP:' , ip);
 });

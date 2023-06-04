@@ -24,3 +24,5 @@ const fetchMyIp = function(callback) {
     }
   });
 };
+
+module.exports = { fetchMyIP };
